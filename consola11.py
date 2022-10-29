@@ -1,5 +1,5 @@
 import tkinter as tk
-from tkinter import ttk, messagebox
+from tkinter import ttk, messagebox, Menu
 
 # Manejo de Menus
 
@@ -21,9 +21,25 @@ def enviar():
     mensaje1= entrada1.get()
     if mensaje1:
         messagebox.showinfo('mostramos informacion', mensaje1 + ' informativo')
+
+
+def crear_menu():
+    #conf menu principal
+    menu_principal = Menu(ventana)
+    #tearoff = False   asi se evita que se separe el menu de la interface
+    submenu_archivo = Menu(menu_principal, tearoff=0)
+    submenu_archivo.add_command(label='Nuevo')
+    #agregamos el submenu al menu principal
+    menu_principal.add_cascade(menu=submenu_archivo, label='Archivo')
+
+    #mostramos el menu
+    ventana.config(menu=menu_principal)
+
         
 boton1 = ttk.Button(ventana, text='enviar', command=enviar)
 boton1.grid(row=0, column=1)
+
+crear_menu()
 
 
 ventana.mainloop()
