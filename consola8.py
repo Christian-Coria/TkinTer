@@ -22,6 +22,9 @@ def enviar():
     boton1.config(text=entrada_var1.get()) 
     # Para modificaciones se usa variable de texto y metodo set
     entrada_var1.set('cambio')
+    #recuperamos la variable modificada 
+    print(entrada1.get()       )#desde el contenido de la caja de texto
+    print(entrada_var1.get())   #desde el contenido de la variable 
     
 
 boton1 = ttk.Button(ventana, text='enviar', command=enviar)
