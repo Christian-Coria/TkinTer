@@ -1,4 +1,5 @@
 import tkinter as tk
+import sys
 from tkinter import ttk, messagebox, Menu
 
 # Manejo de Menus
@@ -22,6 +23,10 @@ def enviar():
     if mensaje1:
         messagebox.showinfo('mostramos informacion', mensaje1 + ' informativo')
 
+def salir():
+    ventana.quit()
+    ventana.destroy()
+    sys.exit()
 
 def crear_menu():
     #conf menu principal
@@ -29,10 +34,19 @@ def crear_menu():
     #tearoff = False   asi se evita que se separe el menu de la interface
     submenu_archivo = Menu(menu_principal, tearoff=0)
     submenu_archivo.add_command(label='Nuevo')
-    #agregamos el submenu al menu principal
+    #agregar separador
+    submenu_archivo.add_separator()
+    submenu_archivo.add_command(label='Salir', command=salir)
     menu_principal.add_cascade(menu=submenu_archivo, label='Archivo')
+    #submenu ayuda
+    submenu_ayuda = Menu(menu_principal, tearoff=0)
+    submenu_ayuda.add_command(label='Acerca De')
+    menu_principal.add_cascade(menu=submenu_ayuda, label='Ayuda')
 
     #mostramos el menu
+    #agregamos el submenu al menu principal
+    
+
     ventana.config(menu=menu_principal)
 
         
